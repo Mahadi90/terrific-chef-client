@@ -1,8 +1,15 @@
 import React from 'react';
 import Lottie from "lottie-react";
 import bannerImg from '../../public/banner_img.json'
+import { useLoaderData } from 'react-router-dom';
+import SingleChef from './singleChef';
 
 const Home = () => {
+
+    // get chef data using useloader hook
+    const chefDetails = useLoaderData()
+    // console.log(chefDetails)
+
     return (
         <div>
             {/* banner section */}
@@ -16,6 +23,20 @@ const Home = () => {
                 </div>
                 <div>
                 <Lottie className='w-[80%]' animationData={bannerImg} loop={true} />
+                </div>
+            </div>
+
+
+            {/* chef section */}
+            <div className='my-14'>
+                <h2 className='text-red-500 text-4xl font-bold text-center my-6'>These are our best Italian chef</h2>
+                <div className='mx-2 lg:mx-12 grid grid-cols-1 lg:grid-cols-3 gap-4'>
+                    {
+                    chefDetails.map(singleChef => <SingleChef
+                    key={singleChef.id}
+                    singleChef={singleChef}
+                    />)
+                    }
                 </div>
             </div>
         </div>
