@@ -8,6 +8,7 @@ import Blog from './components/Blog.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import ChefRecipe from './components/ChefRecipe'
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {

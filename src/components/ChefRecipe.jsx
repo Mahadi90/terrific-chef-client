@@ -31,10 +31,10 @@ const ChefRecipe = () => {
             <p className="py-6">
             {bio}
             </p>
-            <div className="flex justify-between">
-                <p>Number of Recipes: {number_of_recipes}</p>
+            <div className="lg:flex justify-between">
+                <p><span className="font-bold">Number of Recipes:</span> {number_of_recipes}</p>
                 <p className="flex items-center"><FaThumbsUp className="me-1"/>{recipe_likes}</p>
-                <p>Experience: {years_of_experience} years</p>
+                <p><span className="font-bold">Experinece:</span> {years_of_experience} years</p>
             </div>
           </div>
         </div>
