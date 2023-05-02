@@ -1,12 +1,39 @@
 import React from "react";
+import { Document, Page, Text } from '@react-pdf/renderer';
+import PDF from '../../public/blog.pdf'
+import { FaDownload } from "react-icons/fa";
+
 
 const Blog = () => {
+
+    // pdf download funtion
+    const createPdf = () => (
+        <Document>
+          <Page>
+            <Text>{PDF}</Text>
+          </Page>
+        </Document>
+      );
+
+      const handleDownload = () => {
+        const pdfBlob = new Blob([createPdf()], { type: 'application/pdf' });
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'hello.pdf';
+        document.body.appendChild(link);
+        link.click();
+      };
+      
+
   return (
     <div className="mx-2 lg:mx-12">
+        <button className="mt-8" onClick={handleDownload}><FaDownload></FaDownload></button>
       <h2 className="text-red-500 text-3xl text-center font-bold my-6">
         Blog Page
       </h2>
       <div className="p-4 bg-gray-200 rounded my-2">
+    
         <h3 className="font-bold mb-2">1.Differences between uncontrolled and controlled components.</h3>
         <p>
           Controlled components refer to components that have their state and
