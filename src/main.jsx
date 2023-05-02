@@ -11,6 +11,7 @@ import ChefRecipe from './components/ChefRecipe'
 import 'react-toastify/dist/ReactToastify.css';
 import ErrorPage from './components/ErrorPage'
 import AuthProvider from './providers/AuthProvider'
+import PrivateRoutes from './routes/PrivateRoutes'
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
        path: '/:id',
-       element: <ChefRecipe></ChefRecipe>,
+       element: <PrivateRoutes><ChefRecipe></ChefRecipe></PrivateRoutes>,
        loader: ({params}) => fetch(`http://localhost:5000/chef/${params.id}`)
       },
       {

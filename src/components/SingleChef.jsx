@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaThumbsUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import PrivateRoutes from '../routes/PrivateRoutes';
 
 const SingleChef = ({singleChef}) => {
 
