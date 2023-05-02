@@ -2,8 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
+
+    const handleRegister = e => {
+        e.preventDefault()
+
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photoUrl = form.photo.value;
+
+        console.log(name,email,password,photoUrl)
+    }
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <form onSubmit={handleRegister} className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Register here!</h1>
@@ -75,7 +87,7 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     );
 };
 

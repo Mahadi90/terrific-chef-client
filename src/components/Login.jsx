@@ -3,8 +3,19 @@ import {  FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+
+    const handleLogIn = e => {
+        e.preventDefault()
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email,password)
+    }
+
   return (
-      <div className="hero min-h-screen bg-base-200">
+      <form onSubmit={handleLogIn} className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
@@ -60,7 +71,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
+      </form>
   );
 };
 
