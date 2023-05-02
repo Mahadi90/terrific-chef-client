@@ -9,11 +9,13 @@ import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import ChefRecipe from './components/ChefRecipe'
 import 'react-toastify/dist/ReactToastify.css';
+import ErrorPage from './components/ErrorPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main/>,
+    errorElement:<ErrorPage/>,
     children : [
       {
         path: '/',
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register/>
-      }
+      },
     ]
   }
 ])

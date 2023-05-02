@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ActiveLink from './ActiveLink';
 
 const Header = () => {
     return (
@@ -10,22 +10,22 @@ const Header = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <Link to='/'>Home</Link>
-        <Link to='/blog'>Blog</Link>
-        <Link>Contact</Link>
+        <ActiveLink to='/'>Home</ActiveLink>
+        <ActiveLink to='/blog'>Blog</ActiveLink>
+        <ActiveLink to='/contact'>Contact</ActiveLink>
       </ul>
     </div>
     <a className="btn btn-ghost normal-case text-3xl  font-bold"><span className='text-red-600'>T</span>errific <span className='text-red-600'>C</span>hef</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-    <Link className='mx-2' to='/'>Home</Link>
-        <Link className='mx-2'  to='/blog'>Blog</Link>
-        <Link className='mx-2' >Contact</Link>
+    <ActiveLink className='mx-2' to='/'>Home</ActiveLink>
+        <ActiveLink className='mx-2'  to='/blog'>Blog</ActiveLink>
+        <ActiveLink className='mx-2' to='/contact' >Contact</ActiveLink>
     </ul>
   </div>
   <div className="navbar-end">
-    <Link className='me-8 bg-red-500 py-1 px-3 rounded-md text-white'  to='/login'>Login</Link>
+    <ActiveLink className='me-8 bg-red-500 py-1 px-3 rounded-md text-white'  to='/login'>Login</ActiveLink>
   </div>
 </div>
     );
