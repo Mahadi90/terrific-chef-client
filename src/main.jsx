@@ -22,12 +22,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home/>,
-        loader: () => fetch('http://localhost:5000/chef')
+        loader: () => fetch('https://terrific-chef-server-side-mahadimhs787-gmailcom.vercel.app/chef')
       },
       {
        path: '/:id',
        element: <PrivateRoutes><ChefRecipe></ChefRecipe></PrivateRoutes>,
-       loader: ({params}) => fetch(`http://localhost:5000/chef/${params.id}`)
+       loader: ({params}) => fetch(`https://terrific-chef-server-side-mahadimhs787-gmailcom.vercel.app/chef/${params.id}`)
       },
       {
         path: '/blog',
