@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
   const { logIn, logInWithGoogle, logInWithGithub } = useContext(AuthContext);
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -15,17 +17,24 @@ const Login = () => {
 
     // console.log(email,password)
 
+
+    setError('')
+    setSuccess('')
+    // for email-pass login
     logIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
         form.reset()
+        setSuccess("Login successfull")
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
+        setError(error.message)
       });
   };
 
+//   for google login
   const handleLoginWithGoogle = () => {
     logInWithGoogle()
       .then((result) => {
@@ -37,6 +46,7 @@ const Login = () => {
       });
   };
 
+//   for github login
 const handleGitHubLogIn = () => {
     logInWithGithub()
     .then((result) => {
@@ -94,7 +104,8 @@ const handleGitHubLogIn = () => {
               <div className="form-control">
                 <button className="btn btn-primary">Login</button>
               </div>
-              <p className="text-center">or</p>
+              <p className="text-red-600"><small>{error}</small></p>
+              <p className="text-green-600"><small>{success}</small></p>
             </div>
           </form>
         </div>
