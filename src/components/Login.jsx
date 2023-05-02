@@ -3,6 +3,8 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
+
+
 const Login = () => {
   const { logIn, logInWithGoogle, logInWithGithub } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -30,7 +32,7 @@ const Login = () => {
         console.log(loggedUser);
         form.reset();
         setSuccess("Login successfull");
-        navigate(from, {replace: true});
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -40,11 +42,10 @@ const Login = () => {
 
   //   for google login
   const handleLoginWithGoogle = () => {
-    logInWithGoogle()
-      .then((result) => {
+    logInWithGoogle().then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(from, {replace: true});
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -53,11 +54,10 @@ const Login = () => {
 
   //   for github login
   const handleGitHubLogIn = () => {
-    logInWithGithub()
-      .then((result) => {
+    logInWithGithub().then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(from, {replace: true});
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -66,7 +66,7 @@ const Login = () => {
 
   return (
     <>
-    <div className="flex justify-center my-2">
+      <div className="flex justify-center my-2">
         <button
           onClick={handleLoginWithGoogle}
           className="border border-red-500 p-2 mx-2 text-red-500 rounded-3xl hover:bg-red-500 transition duration-300 hover:text-white flex items-center justify-center"
@@ -139,7 +139,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      
     </>
   );
 };

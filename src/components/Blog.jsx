@@ -1,40 +1,40 @@
 import React from "react";
-import { Document, Page, Text } from '@react-pdf/renderer';
-import PDF from '../../public/blog.pdf'
+import { Document, Page, Text } from "@react-pdf/renderer";
+import PDF from "../../public/blog.pdf";
 import { FaDownload } from "react-icons/fa";
 
-
 const Blog = () => {
+  // pdf download funtion
+  const createPdf = () => (
+    <Document>
+      <Page>
+        <Text>{PDF}</Text>
+      </Page>
+    </Document>
+  );
 
-    // pdf download funtion
-    const createPdf = () => (
-        <Document>
-          <Page>
-            <Text>{PDF}</Text>
-          </Page>
-        </Document>
-      );
-
-      const handleDownload = () => {
-        const pdfBlob = new Blob([createPdf()], { type: 'application/pdf' });
-        const pdfUrl = URL.createObjectURL(pdfBlob);
-        const link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = 'hello.pdf';
-        document.body.appendChild(link);
-        link.click();
-      };
-      
+  const handleDownload = () => {
+    const pdfBlob = new Blob([createPdf()], { type: "application/pdf" });
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "hello.pdf";
+    document.body.appendChild(link);
+    link.click();
+  };
 
   return (
     <div className="mx-2 lg:mx-12">
-        <button className="mt-8" onClick={handleDownload}><FaDownload></FaDownload></button>
+      <button className="mt-8" onClick={handleDownload}>
+        <FaDownload></FaDownload>
+      </button>
       <h2 className="text-red-500 text-3xl text-center font-bold my-6">
         Blog Page
       </h2>
       <div className="p-4 bg-gray-200 rounded my-2">
-    
-        <h3 className="font-bold mb-2">1.Differences between uncontrolled and controlled components.</h3>
+        <h3 className="font-bold mb-2">
+          1.Differences between uncontrolled and controlled components.
+        </h3>
         <p>
           Controlled components refer to components that have their state and
           behavior controlled by the parent component. These components rely on
@@ -44,7 +44,9 @@ const Blog = () => {
         </p>
       </div>
       <div className="p-4 bg-gray-200 rounded my-2">
-        <h3 className="font-bold mb-2">2.How to validate React props using PropTypes</h3>
+        <h3 className="font-bold mb-2">
+          2.How to validate React props using PropTypes
+        </h3>
         <p>
           Properties validation is a useful way to force the correct usage of
           the components. This will help during development to avoid future bugs
@@ -61,7 +63,9 @@ const Blog = () => {
         </p>
       </div>
       <div className="p-4 bg-gray-200 rounded my-2">
-        <h3 className="font-bold mb-2">3.difference between nodejs and express js.</h3>
+        <h3 className="font-bold mb-2">
+          3.difference between nodejs and express js.
+        </h3>
         <p>
           Node.js is a run-time environment created to run JavaScript on the
           server side.
@@ -74,7 +78,9 @@ const Blog = () => {
         </p>
       </div>
       <div className="p-4 bg-gray-200 rounded my-2">
-        <h3 className="font-bold mb-2">4.What is a custom hook, and why will you create a custom hook?</h3>
+        <h3 className="font-bold mb-2">
+          4.What is a custom hook, and why will you create a custom hook?
+        </h3>
         <p>
           Custom Hooks are functions. Usually, they start with the word “use”.
           Unlike a React component, a custom Hook doesn’t need to have a
