@@ -7,7 +7,10 @@ import slider1 from "../assets/images/cheff.webp";
 import slider2 from "../assets/images/homes.webp";
 import slider3 from "../assets/images/recep.jpg";
 
+
 const Home = () => {
+
+
   // get chef data using useloader hook
   const chefDetails = useLoaderData();
   // console.log(chefDetails)
