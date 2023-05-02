@@ -20,11 +20,14 @@ const Register = () => {
         .then(result => {
             const createdUser =  result.user;
             console.log(createdUser)
+            form.reset()
         })
         .catch(error => {
             console.log(error)
         })
     }
+
+    
     return (
         <form onSubmit={handleRegister} className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ActiveLink from './ActiveLink';
+import { AuthContext } from '../providers/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
+
+  const {user, logOut} = useContext(AuthContext)
+
+  const handleLogOut = () => {
+    logOut()
+    .then()
+    .catch(error => {console.log(error)})
+  }
     return (
         <div className="navbar bg-base-100 border border-b-2">
   <div className="navbar-start">
@@ -25,7 +35,14 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <ActiveLink className='me-8 bg-red-500 py-1 px-3 rounded-md text-white'  to='/login'>Login</ActiveLink>
+    {
+      user ? <>
+      <FaUserAlt className='w-6 h-6 me-4'/>
+      <button onClick={handleLogOut} className='text-white bg-red-500 py-1 px-2 rounded-md'>Log Out</button>
+      </> :
+       <ActiveLink className='me-8 bg-red-500 py-1 px-3 rounded-md text-white'  to='/login'>Login</ActiveLink>
+    }
+   
   </div>
 </div>
     );
