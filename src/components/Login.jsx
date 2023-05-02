@@ -1,26 +1,60 @@
-import React from "react";
-import {  FaGithub, FaGoogle } from "react-icons/fa";
+import React, { useContext } from "react";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
+  const { logIn, logInWithGoogle, logInWithGithub } = useContext(AuthContext);
 
-    const handleLogIn = e => {
-        e.preventDefault()
+  const handleLogIn = (e) => {
+    e.preventDefault();
 
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-        console.log(email,password)
-    }
+    // console.log(email,password)
+
+    logIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleLoginWithGoogle = () => {
+    logInWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+const handleGitHubLogIn = () => {
+    logInWithGithub()
+    .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+}
 
   return (
-      <form onSubmit={handleLogIn} className="hero min-h-screen bg-base-200">
+    <>
+      <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <form onSubmit={handleLogIn} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -60,18 +94,24 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
               <p className="text-center">or</p>
-              <button className="border border-red-500 p-2 text-red-500 rounded-3xl hover:bg-red-500 transition duration-300 hover:text-white flex items-center justify-center">
-                <FaGoogle className="me-2 w-6 h-6"/>
-                Continue with google
-              </button>
-              <button className="border border-gray-700 p-2 rounded-3xl hover:bg-gray-700 transition duration-300 hover:text-white text-gray-700 flex items-center justify-center">
-                <FaGithub className="me-2 w-6 h-6"/>
-                Continue with github
-              </button>
             </div>
-          </div>
+          </form>
         </div>
-      </form>
+      </div>
+      <div className="flex justify-center my-12">
+      <button
+        onClick={handleLoginWithGoogle}
+        className="border border-red-500 p-2 mx-2 text-red-500 rounded-3xl hover:bg-red-500 transition duration-300 hover:text-white flex items-center justify-center"
+      >
+        <FaGoogle className="me-2 w-6 h-6" />
+        Continue with google
+      </button>
+      <button onClick={handleGitHubLogIn} className="border border-gray-700 p-2 rounded-3xl hover:bg-gray-700 transition duration-300 hover:text-white text-gray-700 flex items-center justify-center">
+        <FaGithub className="me-2 w-6 h-6" />
+        Continue with github
+      </button>
+      </div>
+    </>
   );
 };
 
