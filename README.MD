@@ -8,4 +8,4 @@
 ### Tailwind
 ### DaisyUI
 
-### Live Link : https://terrific-chef.netlify.app/
+### Live Link : https://terrific-chef.web.app/login

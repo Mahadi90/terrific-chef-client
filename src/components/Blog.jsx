@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Document, Page, Text } from "@react-pdf/renderer";
 import PDF from "../../public/blog.pdf";
 import { FaDownload } from "react-icons/fa";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Blog = () => {
   // pdf download funtion
@@ -12,6 +13,15 @@ const Blog = () => {
       </Page>
     </Document>
   );
+
+  const { loading } = useContext(AuthContext);
+  if (loading) {
+    return (
+      <div className="text-center my-36">
+        <progress className="progress w-56"></progress>
+      </div>
+    );
+  }
 
   const handleDownload = () => {
     const pdfBlob = new Blob([createPdf()], { type: "application/pdf" });
