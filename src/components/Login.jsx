@@ -6,12 +6,15 @@ import { AuthContext } from "../providers/AuthProvider";
 
 
 const Login = () => {
+
   const { logIn, logInWithGoogle, logInWithGithub } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   //   console.log(location)
+
+
   const from = location.state?.from?.pathname || "/";
 
   const handleLogIn = (e) => {

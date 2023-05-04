@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Lottie from "lottie-react";
 import bannerImg from "../../public/banner_img.json";
 import { useLoaderData } from "react-router-dom";
@@ -6,9 +6,18 @@ import SingleChef from "./singleChef";
 import slider1 from "../assets/images/cheff.webp";
 import slider2 from "../assets/images/homes.webp";
 import slider3 from "../assets/images/recep.jpg";
+import { AuthContext } from "../providers/AuthProvider";
 
 
 const Home = () => {
+  const { loading } = useContext(AuthContext);
+  if (loading) {
+    return (
+      <div className="text-center my-36">
+        <progress className="progress w-56"></progress>
+      </div>
+    );
+  }
 
 
   // get chef data using useloader hook

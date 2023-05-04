@@ -5,11 +5,17 @@ import { FaUserAlt } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [name, setName] = useState('')
 
+  const handleDisplayName = () => {
+    setName(user.displayName)
+  }
 
   const handleLogOut = () => {
     logOut()
-      .then()
+      .then(
+        setName('')
+      )
       .catch((error) => {
         console.log(error);
       });
@@ -57,14 +63,14 @@ const Header = () => {
             Blog
           </ActiveLink>
           <a className="mx-2">Contact</a>
-          <p>{name}</p>
         </ul>
       </div>
       <div className="navbar-end">
+      <p className="me-4">{name ? name : ""}</p>
         {user ? (
           <>
-
-            <div>{user.photoURL ? <img className="w-8 h-8 me-4" src={user.photoURL} alt="" /> : <FaUserAlt className="w-6 h-6 me-4" />}</div>
+          
+            <div onMouseOver={handleDisplayName}>{user.photoURL ? <img className="w-8 h-8 me-4" src={user.photoURL} alt="" /> : <FaUserAlt className="w-6 h-6 me-4" />}</div>
             <button
               onClick={handleLogOut}
               className="text-white bg-red-500 py-1 px-2 rounded-md"
