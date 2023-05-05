@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Document, Page, Text } from "@react-pdf/renderer";
+import { Document, Page } from 'react-pdf';
 import PDF from "../../public/blog.pdf";
 import { FaDownload } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthProvider";
@@ -35,9 +35,12 @@ const Blog = () => {
 
   return (
     <div className="mx-2 lg:mx-12">
-      <button className="mt-8" onClick={handleDownload}>
-        <FaDownload></FaDownload>
+      {/* bdf btn */}
+      <button className="mt-8 flex items-center gap-1 bg-blue-500 py-2 px-4 text-white rounded-sm" onClick={handleDownload}>
+        <FaDownload></FaDownload> Download
       </button>
+
+      {/* blog section */}
       <h2 className="text-red-500 text-3xl text-center font-bold my-6">
         Blog Page
       </h2>

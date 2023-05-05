@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { FaThumbsUp } from 'react-icons/fa';
 import RecipeInfo from "./RecipeInfo";
+import LazyLoad from 'react-lazy-load';
 
 const ChefRecipe = () => {
   const chefRecipes = useLoaderData();
@@ -22,10 +23,12 @@ const ChefRecipe = () => {
         {/* chef details */}
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
-          <img
+         <LazyLoad>
+         <img
             src={picture}
             className="max-w-sm rounded-lg shadow-2xl h-96"
           />
+         </LazyLoad>
           <div>
             <h1 className="text-5xl font-bold">{nam}</h1>
             <p className="py-6">

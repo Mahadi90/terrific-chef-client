@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
+import LazyLoad from 'react-lazy-load';
 
 const RecipeInfo = ({ recipe }) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -15,7 +16,9 @@ const RecipeInfo = ({ recipe }) => {
   return (
     <div className="card card-compact   bg-base-100 shadow-xl">
       <figure>
-        <img className="h-64 w-full" src={img} alt="recipe" />
+       <LazyLoad >
+       <img className="h-64 w-full" src={img} alt="recipe" />
+       </LazyLoad>
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
